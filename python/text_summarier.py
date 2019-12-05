@@ -22,11 +22,7 @@ def summarize_text (text, num_sent):
 
     clean_text = preprocess (text)
 
-    # Tokenize the data into sentences
-    def tokenize (text):
-        return nltk.sent_tokenize (text)
-
-    sentences = tokenize (text)
+    sentences = nltk.sent_tokenize (text)
 
     # Remove stop words and create a dictionary of word-count
     stop_words = nltk.corpus.stopwords.words('english')
