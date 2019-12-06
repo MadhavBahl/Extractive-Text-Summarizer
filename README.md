@@ -4,6 +4,8 @@
 
 This repository contains a very simple imlementation of extractive text summarization. The implemented summarizer was partially implemented from this paper (without adding a boost factor) - [https://pdfs.semanticscholar.org/2df1/595bcbee37de1147784585a097f3a2819fdf.pdf](https://pdfs.semanticscholar.org/2df1/595bcbee37de1147784585a097f3a2819fdf.pdf)
 
+The code for summarizer service can be found in `service` folder. After creating the service, this project was hosted as a flask API.
+
 ## Steps
 
 ### From the above mentioned paper
