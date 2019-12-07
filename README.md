@@ -35,7 +35,7 @@ The code for summarizer service can be found in `service` folder. After creating
 5. Create a word-count dictionary
 6. Normalize the word-frequency dictionary (weighted word count matrix/dictionary)
     ```
-     weight = (frequency of that word)/(maximum frequency)
+     weight = (frequency of that word)/(total number of terms)
     ```
 7. Assign score to each sentence
 8. Rank inidivivdual sentences according to weight and extract `n` highest ranked sentences
@@ -59,8 +59,6 @@ Steps and code as shown below -
 
 ```python
 def preprocess (text):
-    # Remove those reference links (wiki) eg [8]
-    text = re.sub (r"\[[0-9]*\]*", " ", text)
     # Convert to lower case
     clean_text = text.lower()
     # Remove special characters
@@ -105,9 +103,13 @@ for word in nltk.word_tokenize(clean_text):
 6. Normalize the word-frequency dictionary (weighted word count matrix/dictionary)
 
 ```python
+# Find the total number of terms (not necessarily unique) = sum of values in the word_count_dict
+total_terms = sum(word_count_dict.values)
+
+# Normalize the word-frequency dictionary (weighted word count matrix/dictionary)
 max_value = max(word_count_dict.values())
-    for key in word_count_dict.keys():
-        word_count_dict[key] = word_count_dict[key]/max_value
+for key in word_count_dict.keys():
+    word_count_dict[key] = word_count_dict[key]/total_terms
 ```
 
 7. Assign scores to each sentence
